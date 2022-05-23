@@ -1,0 +1,19 @@
+# Intellij files
+.idea/
+out/
+
+# Gradle files
+.gradle/
+build/
+
+# Test outputs
+*.csv
+
+# Eclipse files
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code files
+.vscode/
