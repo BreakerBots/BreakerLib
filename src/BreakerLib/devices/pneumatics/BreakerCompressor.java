@@ -5,13 +5,15 @@
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import PneumaticsControlModule;
 
 /** Compressor with built-in AnalogPotentiometer and pneumatic module support. */
 public class BreakerCompressor {
-
     
     private PneumaticsModuleType moduleType;
     private int moduleID;
+
+    private PneumaticsControlModule pcm
 
     private AnalogPotentiometer analogPressureSensor;
     private Compressor airCompressor;
