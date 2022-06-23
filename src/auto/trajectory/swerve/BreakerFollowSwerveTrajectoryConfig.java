@@ -18,12 +18,11 @@ public class BreakerFollowSwerveTrajectoryConfig {
     private BreakerSwerveDrive drivetrain;
     private Constraints constraints;
 
-    public BreakerFollowSwerveTrajectoryConfig(BreakerSwerveDrive drivetrain, double xPositionKp, double xPositionKi,
-            double xPositionKd, double yPositionKp, double yPositionKi, double yPositionKd,
+    public BreakerFollowSwerveTrajectoryConfig(BreakerSwerveDrive drivetrain, PIDController xPositionPID, PIDController yPositionPID,
             double thetaAngleKp, double thetaAngleKi, double thetaAngleKd, double maxAllowedThetaVel,
             double maxAllowedThetaAccel) {
-        xPosPID = new PIDController(xPositionKp, xPositionKi, xPositionKd);
-        yPosPID = new PIDController(yPositionKp, yPositionKi, yPositionKd);
+        xPosPID = xPositionPID;
+        yPosPID = yPositionPID;
         constraints = new Constraints(maxAllowedThetaVel, maxAllowedThetaAccel);
         tAngPID = new ProfiledPIDController(thetaAngleKp, thetaAngleKi, thetaAngleKd, constraints);
         this.drivetrain = drivetrain;

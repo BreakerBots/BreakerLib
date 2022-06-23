@@ -26,7 +26,7 @@ import frc.robot.BreakerLib.util.BreakerTriplet;
 public class SystemDiagnostics implements BreakerSelfTestable {
     private List<BaseMotorController> motorControllers = new ArrayList<>();
     private List<BreakerSelfTestable> devices = new ArrayList<>();
-    private List<Integer> outherIdsCAN;
+    private List<Integer> outherIdsCAN = new ArrayList<>();
     private Supplier<DeviceHealth> deviceHealthSupplier;
     private Supplier<String> faultStringSupplier;
     private boolean usesSuppliers = false;

@@ -18,7 +18,7 @@ import frc.robot.BreakerLib.util.math.interpolation.BreakerInterpolableDouble;
 import frc.robot.BreakerLib.util.math.interpolation.interpolateingmaps.BreakerInterpolateingTreeMap;
 
 /** Add your docs here. */
-public class BreakerSwerveRotationSupplier {
+public class BreakerSwerveRotationSupplier implements BreakerGenericSwerveRotationSupplier {
     private BreakerRotationPoint[] rotationPoints;
     private Supplier<Rotation2d> externalSupplier;
     private BreakerInterpolateingTreeMap<Double, BreakerInterpolableDouble> interMap;
@@ -45,14 +45,17 @@ public class BreakerSwerveRotationSupplier {
         usesSupplier = true;
     }
 
+    @Override
     public void setCurrentTime(double currentTime) {
         this.currentTime = currentTime;
     }
 
+    @Override
     public BreakerRotationPoint[] getRotationPoints() {
         return rotationPoints;
     }
 
+    @Override
     public Rotation2d getRotation() {
         if (usesSupplier) {
             return externalSupplier.get();

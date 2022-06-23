@@ -5,6 +5,7 @@
 package frc.robot.BreakerLib.auto.trajectory.management;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.wpi.first.math.trajectory.Trajectory;
@@ -12,7 +13,7 @@ import frc.robot.BreakerLib.auto.trajectory.management.conditionalcommand.Breake
 
 /** Add your docs here. */
 public class BreakerTrajectoryPath {
-    private List<BreakerConditionalCommand> attachedConditionalCommands;
+    private List<BreakerConditionalCommand> attachedConditionalCommands = new ArrayList<>();
     private Trajectory baseTrajectory;
     public BreakerTrajectoryPath(Trajectory baseTrajectory, BreakerConditionalCommand... conditionalCommands) {
         this.baseTrajectory = baseTrajectory;

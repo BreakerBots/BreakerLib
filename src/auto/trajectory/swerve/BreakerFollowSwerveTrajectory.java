@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import frc.robot.BreakerLib.auto.trajectory.BreakerGenericTrajecotryFollower;
 import frc.robot.BreakerLib.auto.trajectory.management.BreakerTrajectoryPath;
 import frc.robot.BreakerLib.auto.trajectory.management.conditionalcommand.BreakerConditionalCommand;
+import frc.robot.BreakerLib.auto.trajectory.swerve.rotation.BreakerGenericSwerveRotationSupplier;
 import frc.robot.BreakerLib.auto.trajectory.swerve.rotation.BreakerSwerveRotationSupplier;
 import frc.robot.BreakerLib.subsystemcores.drivetrain.swerve.BreakerSwerveDrive;
 import frc.robot.BreakerLib.util.BreakerLog;
@@ -39,7 +40,7 @@ public class BreakerFollowSwerveTrajectory extends CommandBase implements Breake
     private double currentTimestamp = Timer.getFPGATimestamp();
     private double currentTimeSeconds = 0.0;
     private List<BreakerConditionalCommand> attachedCondtionalCommands;
-    private BreakerSwerveRotationSupplier rotationSupplier;
+    private BreakerGenericSwerveRotationSupplier rotationSupplier;
     private boolean usesSupplyedRotation = false;
 
     BreakerFollowSwerveTrajectory(BreakerFollowSwerveTrajectoryConfig config, boolean stopAtEnd,
@@ -63,7 +64,7 @@ public class BreakerFollowSwerveTrajectory extends CommandBase implements Breake
         trajectoriesToFollow = arr;
     }
    
-    BreakerFollowSwerveTrajectory(BreakerFollowSwerveTrajectoryConfig config, BreakerSwerveRotationSupplier rotationSupplier, boolean stopAtEnd,
+    BreakerFollowSwerveTrajectory(BreakerFollowSwerveTrajectoryConfig config, BreakerGenericSwerveRotationSupplier rotationSupplier, boolean stopAtEnd,
             Subsystem requiredSubsystem, BreakerTrajectoryPath... trajectoryPaths) {
         usesSupplyedRotation = true;
         drivetrain = config.getDrivetrain();

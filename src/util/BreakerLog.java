@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DataLogManager;
 import frc.robot.BreakerLib.devices.cosmetic.music.BreakerFalconOrchestra;
 import frc.robot.BreakerLib.devices.cosmetic.music.BreakerSounds;
 import frc.robot.BreakerLib.util.BreakerRoboRIO.RobotMode;
+import frc.robot.BreakerLib.util.robotmanager.BreakerRobotStartConfig;
 
 /** Add your docs here. */
 public class BreakerLog {
@@ -32,13 +33,12 @@ public class BreakerLog {
   }
 
   /** Startup message for robot. */
-  public static void logRobotStarted(int teamNum, String teamName, String robotName, int year,
-      String robotSoftwareVersion, String authorNames) {
+  public static void logRobotStarted(BreakerRobotStartConfig startConfig) {
     StringBuilder work = new StringBuilder(" | ---------------- ROBOT STARTED ---------------- |\n\n");
-    work.append(" TEAM: " + teamNum + " - " + teamName + "\n");
-    work.append(" ROBOT: " + robotName + " - " + year + "\n");
-    work.append(" BREAKERLIB: " + breakerLibVersion + " | " + "ROBOT SOFTWARE: " + robotSoftwareVersion + "\n");
-    work.append(" AUTHORS: " + authorNames + "\n\n");
+    work.append(" TEAM: " + startConfig.getTeamNum() + " - " + startConfig.getTeamName() + "\n");
+    work.append(" ROBOT: " + startConfig.getRobotName() + " - " + startConfig.getRobotYear() + "\n");
+    work.append(" BREAKERLIB: " + breakerLibVersion + " | " + "ROBOT SOFTWARE: " + startConfig.getRobotSoftwareVersion() + "\n");
+    work.append(" AUTHORS: " + startConfig.getAuthorNames() + "\n\n");
     work.append(" | ---------------------------------------------- | \n\n\n");
     BreakerLog.log(work.toString());
   }

@@ -32,7 +32,7 @@ public class BreakerVector3 implements BreakerInterpolable<BreakerVector3> {
         this.forceY = forceY;
         this.forceZ = forceZ;
         magnitude = Math.sqrt(Math.pow(forceX, 2) + Math.pow(forceY, 2) + Math.pow(forceZ, 2));
-        forceRotation = new BreakerRotation3d(new Rotation2d(Math.atan2(forceZ, forceY)),
+        forceRotation = new BreakerRotation3d(new Rotation2d(Math.atan2(forceZ, (Math.sqrt(forceX*forceX+forceY*forceY)))),
                 new Rotation2d(Math.atan2(forceY, forceX))); // need to check this math
     }
 
@@ -53,9 +53,9 @@ public class BreakerVector3 implements BreakerInterpolable<BreakerVector3> {
      * @param forceRotation Rotation of forces.
      */
     public static BreakerVector3 fromMagnitudeAndForceRotation(double magnitude, BreakerRotation3d forceRotation) {
-        double x = Math.cos(forceRotation.getYaw().getRadians()) * Math.cos(forceRotation.getPitch().getRadians());
-        double y = Math.sin(forceRotation.getYaw().getRadians()) * Math.cos(forceRotation.getPitch().getRadians());
-        double z = Math.sin(forceRotation.getPitch().getRadians());
+        double x = magnitude * (Math.cos(forceRotation.getYaw().getRadians()) * Math.cos(forceRotation.getPitch().getRadians()));
+        double y = magnitude * (Math.sin(forceRotation.getYaw().getRadians()) * Math.cos(forceRotation.getPitch().getRadians()));
+        double z = magnitude * (Math.sin(forceRotation.getPitch().getRadians()));
         return new BreakerVector3(x, y, z, magnitude, forceRotation);
     }
 

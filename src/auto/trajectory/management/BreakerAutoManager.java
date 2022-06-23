@@ -21,10 +21,17 @@ public class BreakerAutoManager {
     public BreakerAutoManager(BreakerAutoPath...autoPaths) {
         this.autoPaths = autoPaths;
         selector = new SendableChooser<BreakerAutoPath>();
-        selector.addOption("Do Nouthing", new BreakerAutoPath("Default 'Do Nouthing' Path", new SequentialCommandGroup()) );
+        selector.setDefaultOption("Do Nouthing", new BreakerAutoPath("Default 'Do Nouthing' Path", new SequentialCommandGroup()));
         for (BreakerAutoPath path: autoPaths) {
             selector.addOption(path.getPathName(), path);
         }
+        BreakerDashboard.getSetupTab().add("AUTOPATH SELECTOR", selector).withWidget(BuiltInWidgets.kComboBoxChooser);
+    }
+
+    public BreakerAutoManager() {
+        autoPaths = new BreakerAutoPath[0];
+        selector = new SendableChooser<BreakerAutoPath>();
+        selector.setDefaultOption("Do Nouthing", new BreakerAutoPath("Default 'Do Nouthing' Path", new SequentialCommandGroup()));
         BreakerDashboard.getSetupTab().add("AUTOPATH SELECTOR", selector).withWidget(BuiltInWidgets.kComboBoxChooser);
     }
 

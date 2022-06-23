@@ -34,6 +34,7 @@ public class BreakerProjectileTrajectory {
             BreakerPose3d launchPoint) {
         this.projectile = projectile;
         this.initialVels = initialVels;
+        this.launchPoint = launchPoint;
     }
 
     /** Max height of projectile in meters. */

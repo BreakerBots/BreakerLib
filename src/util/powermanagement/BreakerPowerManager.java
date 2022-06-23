@@ -29,7 +29,7 @@ public class BreakerPowerManager extends SubsystemBase {
     private static final double fullBattetyNominalVoltage = 12.7;
     private static List<BreakerPowerChannel> channelList = BreakerPowerUtil.getNewPowerChannelList(distributor.getType());
     private static TreeMap<BreakerPowerManageable, BreakerPowerManagementConfig> devicesAndConfigs = new TreeMap<>();
-    private static boolean activePowerManagementIsEnabled;
+    private static boolean activePowerManagementIsEnabled = true;
     private static BreakerRunningAverage runningVoltAverage = new BreakerRunningAverage(250);
     protected static BreakerRunningAverage runningPrecentageAverage = new BreakerRunningAverage(250);
     private BreakerPowerManager manager = new BreakerPowerManager();
